@@ -19,6 +19,7 @@ function coinFlip() {
   return choices[Math.floor(Math.random() * choices.length)]
 }
 
+
 /** Multiple coin flips
  * 
  * Write a function that accepts one parameter (number of flips) and returns an array of 
@@ -45,7 +46,6 @@ function coinFlips(flips) {
   }
   return result;
 }
-
 /** Count multiple flips
  * 
  * Write a function that accepts an array consisting of "heads" or "tails" 
@@ -99,4 +99,9 @@ function flipACoin(call) {
  * 
  * Export all of your named functions
 */
-export {coinFlip, coinFlips, countFlips, flipACoin};
+// export {coinFlip, coinFlips, countFlips, flipACoin};
+// module.exports(coinFlip, coinFlips, countFlips, flipACoin)
+exports.coinFlip = coinFlip
+exports.coinFlips = coinFlips
+exports.countFlips = countFlips
+exports.flipACoin = flipACoin
