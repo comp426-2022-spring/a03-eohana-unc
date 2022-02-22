@@ -24,6 +24,21 @@ app.get('/app/flip', (req, res) => {
   res.end()
 })
 
+app.get('/app/flips/:number', (req, res) => {
+  res.statusCode = 200
+  res.statusMessage = "OK"
+  // res.writeHead(res.statusCode, {"Content-Type": "application/json"})
+  numFlips = parseInt(req.params.number) || 1
+  let flips = coin.coinFlips(numFlips)
+  // console.log(flip)
+  res.json({
+    // "aaa":"bbb"
+    "raw": flips,
+    "summary": coin.countFlips(flips)
+})
+  res.end()
+})
+
 
 app.use((req, res) => {
   res.status(404).send('404 NOT FOUND')

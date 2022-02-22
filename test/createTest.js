@@ -5,9 +5,10 @@ const fs = require('fs')
 // Open the JSON file
 
 function writeBashTest(test) {
+  console.log(`Writing test for ${test["testname"]}`)
   let result = `\n# ${test["testname"]}\n`
   result += `echo "Running ${test["testname"]}"\n`
-  result += `expected="${test["expected"]}"\n`
+  result += `expected="${test["expected"].replaceAll("['']", "['\\\"]")}"\n`
   result += `( ( node server.js ${configurePortArg(test["server-port"])}& sleep ${test["server-timer"]} && kill $! ) & \n`
   result += `( sleep 1 && result=$(curl ${test["curl-flags"]}http://localhost:${test["client-port"]}${test["endpoint"]}) && sleep 0.1 ;\n`
   result += `match=$(echo "$result" | grep -E "$expected") ; \n`
@@ -44,3 +45,5 @@ fs.writeFile('../test.sh', content, err => {
   }
   //file written successfully
 })
+
+console.log("Finished writing tests.")

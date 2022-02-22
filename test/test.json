@@ -25,7 +25,7 @@
         "endpoint" : "/app/invalid",
         "curl-flags" : "",
         "expected" : "404 [Nn][Oo][Tt] [Ff][Oo]"
-    },
+    }, 
     {
         "testname" : "Flip Test",
         "server-port" : "3892",
@@ -33,6 +33,24 @@
         "server-timer": 2,
         "endpoint" : "/app/flip",
         "curl-flags" : "",
-        "expected" : "404 [Nn][Oo][Tt] [Ff][Oo]"
+        "expected" : "{['']flip['']:[''](heads|tails)['']}"
+    },
+    {
+        "testname" : "Multiflip Test",
+        "server-port" : "3892",
+        "client-port" : "3892",
+        "server-timer": 2,
+        "endpoint" : "/app/flips/50",
+        "curl-flags" : "",
+        "expected" : "{['']raw['']:\\[([''](heads|tails)[''],){49}[''](heads|tails)['']\\],['']summary['']:{[''](heads|tails)['']:[0-9]+(,[''](heads|tails)['']:[0-9]+)?}"
+    },
+    {
+        "testname" : "Multiflip Invalid Test",
+        "server-port" : "3892",
+        "client-port" : "3892",
+        "server-timer": 2,
+        "endpoint" : "/app/flips/hellos",
+        "curl-flags" : "",
+        "expected" : "{['']raw['']:\\[([''](heads|tails)[''],)*[''](heads|tails)['']\\],['']summary['']:{[''](heads|tails)['']:[0-9]+(,[''](heads|tails)['']:[0-9]+)?}"
     }
 ]
