@@ -4,7 +4,7 @@
   "description": "Small web server to display coin flips",
   "main": "server.js",
   "scripts": {
-    "test": "./test"
+    "test": "cd test && ./createTest.js && cd .. && ./test.sh"
   },
   "repository": {
     "type": "git",
