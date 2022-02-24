@@ -3,7 +3,7 @@
 
 # Header Test
 echo "Running Header Test"
-expected="1200 [Oo][Kk]"
+expected="200 [Oo][Kk]"
 ( ( node server.js & sleep 2 && kill $! ) & 
 ( sleep 1 && result=$(curl http://localhost:5000/app) && sleep 0.1 ;
 match=$(echo "$result" | grep -E "$expected") ; 
@@ -63,7 +63,7 @@ sleep 2
 
 # Multiflip Invalid Test
 echo "Running Multiflip Invalid Test"
-expected="{['\"]raw['\"]:\[(['\"](heads|tails)['\"],)*['\"](heads|tails)['\"]\],['\"]summary['\"]:{['\"](heads|tails)['\"]:[0-9]+(,['\"](heads|tails)['\"]:[0-9]+)?}"
+expected="{['\"]raw['\"]:\[['\"](heads|tails)['\"]\],['\"]summary['\"]:{['\"](heads|tails)['\"]:[0-9]}"
 ( ( node server.js --port=3892 & sleep 2 && kill $! ) & 
 ( sleep 1 && result=$(curl http://localhost:3892/app/flips/hellos) && sleep 0.1 ;
 match=$(echo "$result" | grep -E "$expected") ; 

@@ -51,6 +51,6 @@
         "server-timer": 2,
         "endpoint" : "/app/flips/hellos",
         "curl-flags" : "",
-        "expected" : "{['']raw['']:\\[([''](heads|tails)[''],)*[''](heads|tails)['']\\],['']summary['']:{[''](heads|tails)['']:[0-9]+(,[''](heads|tails)['']:[0-9]+)?}"
+        "expected" : "{['']raw['']:\\[[''](heads|tails)['']\\],['']summary['']:{[''](heads|tails)['']:[0-9]}"
     }
 ]
