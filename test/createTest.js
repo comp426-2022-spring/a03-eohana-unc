@@ -13,7 +13,7 @@ function writeBashTest(test) {
   result += `( sleep 1 && result=$(curl ${test["curl-flags"]}http://localhost:${test["client-port"]}${test["endpoint"]}) && sleep 0.1 ;\n`
   result += `match=$(echo "$result" | grep -E "$expected") ; \n`
   result += `echo "Match: $match; Result: $result; Expected: $expected\\n" \n`
-  result += `[ -n "$match" ] && echo "Passed ${test["testname"]}" || echo "Expected $expected \\nGot: $result ") )\n\n`
+  result += `[ -n "$match" ] && echo '\\e[1;32m'"Passed ${test["testname"]}"'\\e[0m' || ( echo '\\e[1;33m'"Expected $expected" && echo '\\e[1;31m'"Got: $result "'\\e[0m' ) ) )\n\n`
   result += `sleep ${test["server-timer"]}\n\n`
   return result
 }

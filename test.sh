@@ -3,12 +3,12 @@
 
 # Header Test
 echo "Running Header Test"
-expected="200 [Oo][Kk]"
+expected="1200 [Oo][Kk]"
 ( ( node server.js & sleep 2 && kill $! ) & 
 ( sleep 1 && result=$(curl http://localhost:5000/app) && sleep 0.1 ;
 match=$(echo "$result" | grep -E "$expected") ; 
 echo "Match: $match; Result: $result; Expected: $expected\n" 
-[ -n "$match" ] && echo "Passed Header Test" || echo "Expected $expected \nGot: $result ") )
+[ -n "$match" ] && echo '\e[1;32m'"Passed Header Test"'\e[0m' || ( echo '\e[1;33m'"Expected $expected" && echo '\e[1;31m'"Got: $result "'\e[0m' ) ) )
 
 sleep 2
 
@@ -20,7 +20,7 @@ expected="200 [Oo][Kk]"
 ( sleep 1 && result=$(curl http://localhost:3000/app) && sleep 0.1 ;
 match=$(echo "$result" | grep -E "$expected") ; 
 echo "Match: $match; Result: $result; Expected: $expected\n" 
-[ -n "$match" ] && echo "Passed Port Test" || echo "Expected $expected \nGot: $result ") )
+[ -n "$match" ] && echo '\e[1;32m'"Passed Port Test"'\e[0m' || ( echo '\e[1;33m'"Expected $expected" && echo '\e[1;31m'"Got: $result "'\e[0m' ) ) )
 
 sleep 2
 
@@ -32,7 +32,7 @@ expected="404 [Nn][Oo][Tt] [Ff][Oo]"
 ( sleep 1 && result=$(curl http://localhost:2131/app/invalid) && sleep 0.1 ;
 match=$(echo "$result" | grep -E "$expected") ; 
 echo "Match: $match; Result: $result; Expected: $expected\n" 
-[ -n "$match" ] && echo "Passed Not Found Test" || echo "Expected $expected \nGot: $result ") )
+[ -n "$match" ] && echo '\e[1;32m'"Passed Not Found Test"'\e[0m' || ( echo '\e[1;33m'"Expected $expected" && echo '\e[1;31m'"Got: $result "'\e[0m' ) ) )
 
 sleep 2
 
@@ -44,7 +44,7 @@ expected="{['\"]flip['\"]:['\"](heads|tails)['\"]}"
 ( sleep 1 && result=$(curl http://localhost:3892/app/flip) && sleep 0.1 ;
 match=$(echo "$result" | grep -E "$expected") ; 
 echo "Match: $match; Result: $result; Expected: $expected\n" 
-[ -n "$match" ] && echo "Passed Flip Test" || echo "Expected $expected \nGot: $result ") )
+[ -n "$match" ] && echo '\e[1;32m'"Passed Flip Test"'\e[0m' || ( echo '\e[1;33m'"Expected $expected" && echo '\e[1;31m'"Got: $result "'\e[0m' ) ) )
 
 sleep 2
 
@@ -56,7 +56,7 @@ expected="{['\"]raw['\"]:\[(['\"](heads|tails)['\"],){49}['\"](heads|tails)['\"]
 ( sleep 1 && result=$(curl http://localhost:3892/app/flips/50) && sleep 0.1 ;
 match=$(echo "$result" | grep -E "$expected") ; 
 echo "Match: $match; Result: $result; Expected: $expected\n" 
-[ -n "$match" ] && echo "Passed Multiflip Test" || echo "Expected $expected \nGot: $result ") )
+[ -n "$match" ] && echo '\e[1;32m'"Passed Multiflip Test"'\e[0m' || ( echo '\e[1;33m'"Expected $expected" && echo '\e[1;31m'"Got: $result "'\e[0m' ) ) )
 
 sleep 2
 
@@ -68,7 +68,7 @@ expected="{['\"]raw['\"]:\[(['\"](heads|tails)['\"],)*['\"](heads|tails)['\"]\],
 ( sleep 1 && result=$(curl http://localhost:3892/app/flips/hellos) && sleep 0.1 ;
 match=$(echo "$result" | grep -E "$expected") ; 
 echo "Match: $match; Result: $result; Expected: $expected\n" 
-[ -n "$match" ] && echo "Passed Multiflip Invalid Test" || echo "Expected $expected \nGot: $result ") )
+[ -n "$match" ] && echo '\e[1;32m'"Passed Multiflip Invalid Test"'\e[0m' || ( echo '\e[1;33m'"Expected $expected" && echo '\e[1;31m'"Got: $result "'\e[0m' ) ) )
 
 sleep 2
 
