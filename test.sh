@@ -96,4 +96,16 @@ echo "Match: $match; Result: $result; Expected: $expected\n"
 echo "\n\n"
 sleep 2
 
+
+# Call Invalid Test
+echo '\e[1;34m'"Running Call Invalid Test"'\e[0m'
+expected="404 [Nn][Oo][Tt] [Ff][Oo]"
+( ( node server.js --port=3892 & sleep 2 && kill $! ) & 
+( sleep 1 && result=$(curl http://localhost:3892/app/flip/call/invalid) && sleep 0.1 ;
+match=$(echo "$result" | grep -E "$expected") ; 
+echo "Match: $match; Result: $result; Expected: $expected\n" 
+[ -n "$match" ] && echo '\e[1;32m'"Passed Call Invalid Test"'\e[0m' || ( echo '\e[1;33m'"Expected $expected" && echo '\e[1;31m'"Got: $result "'\e[0m' ) ) ) 
+echo "\n\n"
+sleep 2
+
 echo "Done"

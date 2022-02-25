@@ -70,5 +70,15 @@
         "endpoint" : "/app/flip/call/tails",
         "curl-flags" : "",
         "expected" : "{['']?call['']?:['']?tails['']?,['']?flip['']?:(['']?heads['']?,['']?result['']?:['']?lose['']?|['']?tails['']?,['']?result['']?:['']?win['']?)}"
+    },
+    {
+        "testname" : "Call Invalid Test",
+        "server-port" : "3892",
+        "client-port" : "3892",
+        "server-timer": 2,
+        "endpoint" : "/app/flip/call/invalid",
+        "curl-flags" : "",
+        "expected" : "404 [Nn][Oo][Tt] [Ff][Oo]"
     }
+
 ]

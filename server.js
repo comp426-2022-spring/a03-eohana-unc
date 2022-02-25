@@ -39,6 +39,12 @@ app.get('/app/flips/:number', (req, res) => {
   res.end()
 })
 
+app.get('/app/flip/call/:call(heads|tails)', (req, res) => {
+  res.statusCode = 200
+  res.statusMessage = "OK"
+  res.json(coin.flipACoin(req.params.call)).end()
+})
+
 
 app.use((req, res) => {
   res.status(404).send('404 NOT FOUND')
