@@ -1,0 +1,28 @@
+{
+  "name": "a03-eohana-unc",
+  "version": "1.0.0",
+  "description": "Small web server to display coin flips",
+  "main": "server.js",
+  "scripts": {
+    "test": "cd test && ./createTest.js && cd .. && chmod 755 test.sh && ./test.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/comp426-2022-spring/a03-eohana-unc.git"
+  },
+  "keywords": [
+    "API",
+    "server",
+    "coinflip"
+  ],
+  "author": "Elad Ohana",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/comp426-2022-spring/a03-eohana-unc/issues"
+  },
+  "homepage": "https://github.com/comp426-2022-spring/a03-eohana-unc#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "minimist": "^1.2.5"
+  }
+}

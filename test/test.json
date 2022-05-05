@@ -1,0 +1,84 @@
+[
+    {
+        "testname" : "Header Test",
+        "server-port" : "",
+        "client-port" : "5000",
+        "server-timer": 2,
+        "endpoint" : "/app",
+        "curl-flags" : "",
+        "expected" : "200 [Oo][Kk]"
+    },
+    {
+        "testname" : "Port Test",
+        "server-port" : "3000",
+        "client-port" : "3000",
+        "server-timer": 2,
+        "endpoint" : "/app",
+        "curl-flags" : "",
+        "expected" : "200 [Oo][Kk]"
+    },
+    {
+        "testname" : "Not Found Test",
+        "server-port" : "2131",
+        "client-port" : "2131",
+        "server-timer": 2,
+        "endpoint" : "/app/invalid",
+        "curl-flags" : "",
+        "expected" : "404 [Nn][Oo][Tt] [Ff][Oo]"
+    }, 
+    {
+        "testname" : "Flip Test",
+        "server-port" : "3892",
+        "client-port" : "3892",
+        "server-timer": 2,
+        "endpoint" : "/app/flip",
+        "curl-flags" : "",
+        "expected" : "{['']?flip['']?:['']?(heads|tails)['']?}"
+    },
+    {
+        "testname" : "Multiflip Test",
+        "server-port" : "3892",
+        "client-port" : "3892",
+        "server-timer": 2,
+        "endpoint" : "/app/flips/50",
+        "curl-flags" : "",
+        "expected" : "{['']?raw['']?:\\[(['']?(heads|tails)['']?,){49}['']?(heads|tails)['']?\\],['']?summary['']?:{['']?(heads|tails)['']?:[0-9]+(,['']?(heads|tails)['']?:[0-9]+)?}"
+    },
+    {
+        "testname" : "Multiflip Invalid Test",
+        "server-port" : "3892",
+        "client-port" : "3892",
+        "server-timer": 2,
+        "endpoint" : "/app/flips/hellos",
+        "curl-flags" : "",
+        "expected" : "{['']?raw['']?:\\[['']?(heads|tails)['']?\\],['']?summary['']?:{['']?(heads|tails)['']?:[0-9]}"
+    },
+    {
+        "testname" : "Call Heads Test",
+        "server-port" : "3892",
+        "client-port" : "3892",
+        "server-timer": 2,
+        "endpoint" : "/app/flip/call/heads",
+        "curl-flags" : "",
+        "expected" : "{['']?call['']?:['']?heads['']?,['']?flip['']?:(['']?heads['']?,['']?result['']?:['']?win['']?|['']?tails['']?,['']?result['']?:['']?lose['']?)}"
+    },
+    {
+        "testname" : "Call Tails Test",
+        "server-port" : "3892",
+        "client-port" : "3892",
+        "server-timer": 2,
+        "endpoint" : "/app/flip/call/tails",
+        "curl-flags" : "",
+        "expected" : "{['']?call['']?:['']?tails['']?,['']?flip['']?:(['']?heads['']?,['']?result['']?:['']?lose['']?|['']?tails['']?,['']?result['']?:['']?win['']?)}"
+    },
+    {
+        "testname" : "Call Invalid Test",
+        "server-port" : "3892",
+        "client-port" : "3892",
+        "server-timer": 2,
+        "endpoint" : "/app/flip/call/invalid",
+        "curl-flags" : "",
+        "expected" : "404 [Nn][Oo][Tt] [Ff][Oo]"
+    }
+
+]
